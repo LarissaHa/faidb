@@ -4,14 +4,29 @@ from django.utils import timezone
 
 
 class Ai(models.Model):
+    ai_id = models.AutoField(primary_key=True)
+    registered_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    registered_on = models.DateTimeField(blank=True, null=True)
+    book_id = models.ForeignKey('Book', on_delete=models.PROTECT)
+    # Ich habe oben nicht gesagt, dass AIs einzigartig sind. Ich missbrauche die Klasse 
+    # AI mal für Reviews und hole alles über "key_name zusammen". Ich hoffe, das funktioniert.
+    name = models.CharField(max_length=20, help_text="real name", verbose_name="")
+    short_name = models.CharField(max_length=10)
+
+    def publish(self):
+        self.registered_on = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.name
+
+class Review(models.Model):
     CHOOSE3 = (("1", "1"), ("2", "2"), ("3", "3"))
     CHOOSE4 = (("1", "X"), ("2", "XX"), ("3", "XXX"), ("4", "XXXX"))
     CHOOSE5 = (("1", "X"), ("2", "XX"), ("3", "XXX"), ("4", "XXXX"), ("5", "XXXXX"))
-    ai_id = models.AutoField(primary_key=True)
-    book_id = models.ForeignKey('Book', on_delete=models.PROTECT)
-    name = models.CharField(max_length=20, help_text="", verbose_name="")
+    ai_id = models.ForeignKey('Ai', on_delete=models.PROTECT)
+    # key_name = models.CharField(max_length=30, help_text="bookname-ainame", verbose_name="")
     gender = models.CharField(choices=CHOOSE5, max_length=1)
-    short_name = models.CharField(max_length=10)
     manifestation = models.TextField()
     physical = models.CharField(choices=CHOOSE5, max_length=1)
     difference = models.TextField()
@@ -82,7 +97,9 @@ class Series(models.Model):
 
 class Author(models.Model):
     author_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=30)
+    name = models.CharField('lastname-firstname(s)', max_length=30)
+    firstname = models.CharField('firstname', default="firstname", max_length=30)
+    lastname = models.CharField('lastname', default="lastname", max_length=30)
     female = models.BooleanField()
     registered_on = models.DateTimeField(blank=True, null=True)
     registered_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
@@ -93,3 +110,4 @@ class Author(models.Model):
 
     def __str__(self):
         return self.name
+

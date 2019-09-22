@@ -3,5 +3,4 @@
 __pycache__
 myvenv
 .vscode
-/static
 .DS_Store

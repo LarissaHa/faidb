@@ -1,0 +1,102 @@
+{% extends "dataentry/home.html" %}
+
+{% block title %}Search Groups{% endblock %}
+
+{% block main_heading %}Search Groups by Name{% endblock %}
+
+{% block content %}
+
+
+
+<p> 
+<form action="." method="GET">
+    <input type="text" name="q" value="{{ query|escape }}">
+    <input type="submit" value="Search">
+</form>
+</p>
+
+<p>Alternatively you can browse a <a href="/groups/">complete list</a>.</p>
+
+  {% if query %}
+    <h3>PGM names containing "{{ query|escape }}":</h3>
+
+    {% if results %}
+      <table>
+	  {% for line in results %}
+	<tr>
+	  <td><a href="/country/{{ line.0.id }}">{{ line.0.name }}</a></td>
+	  {% for g in line.1 %}
+	  {% if forloop.first %}
+	  <td><a href="/pgag/{{ g.id }}">{{ g.name }}</a></td></tr>
+	  {% else %}
+	  <tr><td></td>
+	  <td><a href="/pgag/{{ g.id }}">{{ g.name }}</a></td></tr>
+	  {% endif %}
+	  {% endfor %}
+
+	  {% endfor %}
+      </table>
+    {% else %}
+      <p>No PGMs found</p>
+    {% endif %}
+  {% endif %}
+      </br>
+<!--    </br>
+<p>
+      <strong>Operational Definition of a Pro-Government Militia (PGM)
+      </strong>
+      </br>
+      We define a pro-government militia as a group that  </br>
+      <ol>
+	<li>1. is identified by the source as pro-government or sponsored by the government (national or sub-national),</li>
+	<li>2. is identified as not part of the regular security forces,</li>
+	<li>3. is armed and</li>
+	<li>4. has some level of organisation.</li>
+      </ol>
+</p>
+</br>
+<p align="justify">
+      <em>Criterion 1:</em> </br>
+     The group is identified by the source as pro-government or sponsored 
+     y the government, either national or sub-national. Evidence that a 
+     group does not oppose the government or that the group shares an 
+     enemy with the government is not sufficient for it to be considered 
+     pro-government. Our focus is on national governments and the 
+     individual ministerial or institutional links between the government 
+     and the militia, but if a group is identified as allied with or 
+     backed by a sub-national government and the national (e.g. federal) 
+     government is neutral in its position towards this group, it is 
+     included as a PGM. However, if sources describe the national (e.g. 
+     federal) government as opposed to this group, then it is not 
+     classified as a PGM. We focus on domestic groups, meaning 
+     pro-government groups that are active within their own borders. 
+     Groups can be sponsored, trained or originate from other countries, 
+     but they need to be linked to the government of the territory they 
+     are based and active in. For private military companies, this means 
+     that they are recorded as being present in the country they are 
+     operating in, i.e. the country for which they contracted to operate 
+     on the government’s side.  </br> </br>
+      <em>Criterion 2:</em>  </br>
+      The group is not the regular state security force as described
+      in government information or other sources on armed forces and
+      police, although the group may operate with the regular state
+      security forces, or even be composed of members of the security
+      forces organized clandestinely as an unofficial or informal
+      group (death squads). This relationship with the regular forces
+      might include, in addition to sharing of personnel as in the
+      above example, information sharing, joint operations or
+      training. Not identified as PGM are therefore the police,
+      regular military forces or special units that are part of the
+      military.  </br> </br>
+      <em>Criterion 3:</em>  </br>
+      The group is armed and equipped for violence, but does not have
+      to commit violence to be included. This criterion is not limited
+      to firearms; some groups are equipped with machetes or clubs.
+      </br> </br>
+<em>Criterion 4:</em> </br>
+The group has some evidence of organisation (for example an identifiable leader, or name, or a geographical, ethnic, religious or political basis) to exclude a “flash” or spontaneous mob. 
+When an existing group fails to fulfill any of these criteria, then the group is coded as terminated as a PGM according to our definition. 
+</p>
+-->
+{% endblock %}
+

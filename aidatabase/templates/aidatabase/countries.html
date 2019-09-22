@@ -1,0 +1,35 @@
+{% extends "dataentry/home.html" %}
+{% load static %}
+
+{% block title %}List of Countries{% endblock %}
+{% block main_heading %}List of Countries{% endblock %}
+
+{% block content %}
+<div class="section-top-border">
+    <div class="row">
+      <div class="col-md-3">
+          <img src="{% static 'dataentry/all.jpg' %}" alt="" title="" width="100%" />
+      </div>
+      <div class="col-md-9 mt-sm-20">
+          <table>
+              <tr><td><b>Country</b></td><!--<td><b>Groups</b></td>--></tr>
+              {% for item in ctglist %}
+              <tr>
+                <td><a href="/country/{{ item.0.id }}">{{ item.0.name }}</a></td>
+                <!--{% if item.1 %}
+                {% for g in item.1 %}
+                {% if forloop.first %}
+                <td><a href="/data/pgag/{{ g.id }}">{{ g.name }}</a></td>--></tr>
+                <!--{% else %}
+                <tr><td></td><td><a href="/data/pgag/{{ g.id }}">{{ g.name }}</a></td></tr>
+                {% endif %}
+                {% endfor %}
+                {% else %}
+                <td>None</td></tr>
+                {% endif %}-->
+              {% endfor %}
+            </table>
+      </div>
+    </div>
+</div>
+{% endblock %}

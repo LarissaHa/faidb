@@ -1,0 +1,203 @@
+{% extends "dataentry/home.html" %}
+
+{% block title %}Pro-Government Militia{% endblock %}
+{% block main_heading %}{{ pgag.name }} ({{ pgag.country.name}}) {% endblock %}
+
+{% block content %}
+<style>
+  table td, table td * {  padding-top: 1em;
+                          text-align: justify; 
+                          vertical-align: top;
+}
+</style>
+
+{% ifequal pgag.finished "no" %}
+
+  <p> The coding for this case is still in progress. </p>
+
+{% else %}
+
+<table cellspacing="30" valign="top">
+  <colgroup>
+    <col width="27%">
+    <col width="73%">
+  </colgroup>
+    <tr>
+      <td style="text-align:left"><b>Country:</b></td>
+      <td><a href="/country/{{ pgag.country.id }}">{{ pgag.country.name }}</a></td>
+    </tr>
+     <tr>
+      <td style="text-align:left"><b>Details of Formation:</b></td>
+      <td>{% ifequal pgag.origin '' %}--{% else %}
+          {{ pgag.origin }}{% endifequal %}</td>
+    </tr>
+     <tr>
+      <td style="text-align:left"><b>Details of Termination:</b></td>
+      <td>{% ifequal pgag.termination '' %}--{% else %}
+          {{ pgag.termination }}{% endifequal %}</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>Purpose:</b></td>
+      <td>{% ifequal pgag.purpose_text '' %}--{% else %}
+          {{ pgag.purpose_text }}{% endifequal %}</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>Organisation:</b></td>
+      <td>{% ifequal pgag.organisation '' %}--{% else %}
+          {{ pgag.organisation }}{% endifequal %}</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>Weapons and Training:</b></td>
+      <td>{% ifequal pgag.weapon_training '' %}--{% else %}
+          {{ pgag.weapon_training }}{% endifequal %}</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>Size:</b></td>
+      <td>{% ifequal pgag.size '' %}--{% else %}
+          {{ pgag.size }}{% endifequal %}</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>Reason for Membership:</b></td>
+      <td>{% ifequal pgag.reason_membership '' %}--{% else %}
+          {{ pgag.reason_membership }}{% endifequal %}</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>Treatment of Civilians:</b></td>
+      <td>{% ifequal pgag.treatment_civilians '' %}--{% else %}
+          {{ pgag.treatment_civilians }}{% endifequal %}</td>
+    </tr>
+    <!--
+    <tr>
+      <td><b>Successor group(s):</b></td>
+      <td>
+        {% if pgag.successor_group.all %}
+        {% for sg in pgag.successor_group.all %}
+        {% if forloop.counter0 %}, {% else %}{% endif %}
+        <a href="/militias-public/data/pgag/{{ sg.id }}/">{{ sg.name }}</a>
+        {% endfor %}
+        {% else %}
+        none
+        {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td><b>Private Military Company?</b></td>
+      <td>{{ pgag.pmc }}</td>
+    </tr>
+    <tr>
+      <td><b>Government Relation:</b></td>
+      <td><a href="/militias-public/data/type/{{ pgag.government_relation }}/">{{ pname }}</a></td>
+    </tr>
+    <tr>
+      <td><b>Government Link(s):</b></td>
+         <td>
+        {% if pgag.government_link.all %}
+        {% for sg in pgag.government_link.all %}{% if forloop.counter0 %}; {% else %}{% endif %}<a href="/militias-public/data/link/{{ sg.id }}/">{{ sg.name }}</a>{% endfor %}
+        {% else %}
+        none
+        {% endif %}
+      </td>
+    </tr>
+  
+    </tr>
+    <tr>
+      <td><b>Training and Equipment</b></td>
+      <td>{% ifequal pgag.government_trained 'noinf' %}--{% else %}
+      {{ pgag.government_trained }}{% endifequal %}</td>
+    </tr>
+    <tr>
+      <td><b>Shared Information and Joint Operations</b></td>
+      <td>{% ifequal pgag.information_shared 'noinf' %}--{% else %}
+      {{ pgag.information_shared }}{% endifequal %}</td>
+    </tr>
+    <tr>
+      <td><b>Shared personnel</b></td>
+      <td>{% ifequal pgag.personnel_shared 'noinf' %}--{% else %}
+      {{ pgag.personnel_shared }}{% endifequal %}</td>
+    </tr>
+    <tr>
+      <td><b>Types of Material Support:</b></td>
+          <td>
+        {% if pgag.support_types.all %}
+        {% for sg in pgag.support_types.all %}{% if forloop.counter0 %}; {% else %}{% endif %}<a href="/militias-public/data/support/{{ sg.id }}/">{{ sg.type }}</a>{% endfor %}
+        {% else %}
+        none
+        {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td><b>State Sponsor(s):</b></td>
+      <td>
+        {% if pgag.supporters.all %}
+        {% for sg in pgag.supporters.all %}{% if forloop.counter0 %}; {% else %}{% endif %}<a href="/militias-public/data/country/{{ sg.id }}/">{{ sg.name }}</a>{% endfor %}
+        {% else %}
+        none
+        {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td><b>Other Connection(s):</b></td>
+      <td>{{ pgag.other_connection }}</td>
+    </tr>
+    <tr>
+      <td><b>Membership:</b></td>
+      <td>
+        {% if pgag.membership.all %}
+        {% for sg in pgag.membership.all %}{% if forloop.counter0 %}; {% else %}{% endif %}<a href="/militias-public/data/member/{{ sg.id }}/">{{ sg.name }}</a>{% endfor %}
+        {% else %}
+        Unknown
+        {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td><b>Location:</b></td>
+      <td>{{ pgag.location }}</td>
+    </tr>
+    <tr>
+      <td><b>Force Strength:</b></td>
+      <td>[{{ pgag.headcount_low|default_if_none:"unknown" }},
+        {{ pgag.headcount_high|default_if_none:"unknown" }}]</td>
+    </tr>
+    <tr>
+      <td><b>Target(s):</b></td>
+      <td>
+        {% if pgag.target.all %}
+        {% for sg in pgag.target.all %}{% if forloop.counter0 %}; {% else %}{% endif %}<a href="/militias-public/data/target/{{ sg.id }}/">{{ sg.type }}</a>{% endfor %}
+        {% else %}
+        None
+        {% endif %}
+      </td>
+    <tr>
+      <td><b>Purpose(s):</b></td>
+          <td>
+        {% if pgag.purpose.all %}
+        {% for sg in pgag.purpose.all %}{% if forloop.counter0 %}; {% else %}{% endif %}<a href="/militias-public/data/purpose/{{ sg.id }}/">{{ sg.name }}</a>{% endfor %}
+        {% else %}
+        None
+        {% endif %}
+      </td>
+    </tr>
+    -->
+    <tr>
+      <td style="text-align:left"><b>Other Information:</b></td>
+      <td>{% ifequal pgag.other '' %}--{% else %}
+          {{ pgag.other }}{% endifequal %}</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>References:</b></td>
+      <td style="text-align:left">{% ifequal pgag.reference_meta '' %}--{% else %}
+          {{ pgag.reference_meta|linebreaksbr }}{% endifequal %}</td>
+    </tr>
+  </table>
+
+  {% endifequal %}
+
+  <!-- <p><br/></p> -->
+  <!--
+  <h2>Evidence</h2>
+  <ul>
+  <li>Examine the <a href="/militias-public/data/pgag/{{ pgag.id }}/evidence/">evidence</a> for this coding.</li>
+  
+  </ul>
+  -->
+{% endblock %}
