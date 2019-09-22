@@ -67,9 +67,9 @@ class Review(models.Model):
 
 class Book(models.Model):
     book_id = models.AutoField(primary_key=True)
-    author_id = models.ForeignKey('Author', on_delete=models.PROTECT)
+    author = models.ManyToManyField("Author")
     title = models.CharField(max_length=30)
-    series_id = models.ForeignKey('Series', on_delete=models.PROTECT)
+    series_id = models.ForeignKey('Series', on_delete=models.PROTECT, blank=True, null=True)
     publish_year = models.IntegerField()
     registered_on = models.DateTimeField(blank=True, null=True)
     registered_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
@@ -82,7 +82,7 @@ class Book(models.Model):
         return self.title
 
 class Series(models.Model):
-    author_id = models.ForeignKey('Author', on_delete=models.PROTECT)
+    # author_id = models.ForeignKey('Author', on_delete=models.PROTECT)
     series_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=30)
     registered_on = models.DateTimeField(blank=True, null=True)
@@ -103,6 +103,7 @@ class Author(models.Model):
     female = models.BooleanField()
     registered_on = models.DateTimeField(blank=True, null=True)
     registered_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    add_information = models.TextField("Some Additional Information", blank=True, null=True)
 
     def publish(self):
         self.registered_on = timezone.now()

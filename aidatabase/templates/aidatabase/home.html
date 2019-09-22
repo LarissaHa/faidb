@@ -40,13 +40,13 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="ministry.html" class="nav-link">Ministries</a></li>
-	          <li class="nav-item"><a href="sermons.html" class="nav-link">Sermons</a></li>
-	          <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
-	          <li class="nav-item active"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	          <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="/ais/" class="nav-link">AIs</a></li>
+	          <li class="nav-item"><a href="/books/" class="nav-link">Books</a></li>
+	          <li class="nav-item"><a href="/series/" class="nav-link">Series</a></li>
+	          <li class="nav-item"><a href="/authors/" class="nav-link">Authors</a></li>
+	          <li class="nav-item"><a href="/blog/" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="/contact/" class="nav-link">Contact</a></li>
 
 	        </ul>
 	      </div>
@@ -73,7 +73,8 @@
           <div class="col-lg-8 ftco-animate">
           	<p>
               {% block image %}<img src="{% static 'aidatabase/bg_3.jpg' %}" alt="" class="img-fluid">{% endblock %}
-            </p>
+			</p>
+			<h2 class="mb-3">{% block page-heading %}{% endblock %}</h2>
             {% block content %}
 
 			Content coming soon ... !
@@ -205,8 +206,9 @@
 			-->
 
 		  </div> <!-- .col-md-8 -->
-		  <!--
+		  
           <div class="col-lg-4 sidebar ftco-animate">
+			<!--
             <div class="sidebar-box">
               <form action="#" class="search-form">
                 <div class="form-group">
@@ -280,9 +282,9 @@
 			-->
 
             <div class="sidebar-box ftco-animate">
-              <h3>Paragraph</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
-            </div>
+              <h3>{% block sidebar-header %}Sidebar Header{% endblock %}</h3>
+              <p>{% block sidebar-content %}Sidebar Content with some Random Text{% endblock %}</p>
+			  </div>
           </div>
 
         </div>
