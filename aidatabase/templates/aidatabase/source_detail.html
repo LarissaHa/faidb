@@ -1,0 +1,40 @@
+{% extends "aidatabase/home.html" %}
+{% load static %}
+
+{% block title %}FAIDB - Sources{% endblock %}
+{% block main_heading %}Sources - Detail{% endblock %}
+{% block breadcrumbs %}<a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="/sources/">Sources <i class="ion-ios-arrow-forward"></i></a></span>{% endblock %}
+
+{% block image %}{% endblock %}
+
+{% block page-heading %}{{ source.title }}{% endblock %}
+
+{% block content %}
+
+<table>
+    <tr><td><b>AIs</b></td><!--<td><b>Groups</b></td>--></tr>
+    {% for item in ais %}
+    <tr>
+        <td><a href="/ais/{{ item.ai_id }}/">{{ item.name }}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
+
+{% block sidebar-header %}Source Information{% endblock %}
+
+{% block sidebar-content %}
+<p>
+    created by
+    <ul>
+    {% for creator in creators %}
+        <li><a href="/persons/{{ creator.person_id }}">{{ creator.lastname}}, {{ creator.firstname}}</a></li>
+    {% endfor %}
+    </ul>
+</p>
+
+<p>
+    <a href="{{ source.website }}" target="_blank">{{ source.website }}</a>
+</p>
+{% endblock %}

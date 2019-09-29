@@ -2,20 +2,20 @@
 {% load static %}
 
 {% block title %}FAIDB - Authors{% endblock %}
-{% block main_heading %}Authors - Detail{% endblock %}
+{% block main_heading %}Authors - Overview{% endblock %}
 {% block breadcrumbs %}<a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="/authors/">Authors <i class="ion-ios-arrow-forward"></i></a></span>{% endblock %}
 
 {% block image %}{% endblock %}
 
-{% block page-heading %}{{ author.lastname }}, {{ author.firstname }}{% endblock %}
+{% block page-heading %}List of Authors{% endblock %}
 
 {% block content %}
 
 <table>
-    <tr><td><b>Books</b></td><!--<td><b>Groups</b></td>--></tr>
-    {% for item in books %}
+    <tr><td><b>Authors</b></td><!--<td><b>Groups</b></td>--></tr>
+    {% for item in authors %}
     <tr>
-        <td><a href="/books/{{ item.book_id }}/">{{ item.publish_year }}: {{ item.title }}</a></td>
+        <td><a href="/authors/{{ item.person_id }}/">{{ item.lastname }}, {{ item.firstname }}</a></td>
     </tr>
     {% endfor %}
 </table>
@@ -26,7 +26,7 @@
 
 {% block sidebar-content %}
 
-{{ author.add_information }}
+This list provides an overview of all registered authors - up until now. If you think one author is missing, request access to the administrator backend and register the author by yourself.
 
 {% endblock %}
 

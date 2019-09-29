@@ -1,0 +1,35 @@
+{% extends "aidatabase/home.html" %}
+{% load static %}
+
+{% block title %}FAIDB - Person{% endblock %}
+{% block main_heading %}Person - Detail{% endblock %}
+{% block breadcrumbs %}<a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="/authors/">Person <i class="ion-ios-arrow-forward"></i></a></span>{% endblock %}
+
+{% block image %}{% endblock %}
+
+{% block page-heading %}{{ person.lastname }}, {{ person.firstname }}{% endblock %}
+
+{% block content %}
+
+<table>
+    <tr><td><b>Sources</b></td><!--<td><b>Groups</b></td>--></tr>
+    {% for item in sources %}
+    <tr>
+        <td>{{ item.publish_year }}: <a href="/sources/{{ item.source_id }}/">{{ item.title }}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
+
+{% block sidebar-header %}Person Information{% endblock %}
+
+{% block sidebar-content %}
+<p>
+    {{ person.add_information }}
+</p>
+<p>
+    <a href="{{ person.website }}" target="_blank">{{ person.website }}</a>
+</p>
+{% endblock %}
+

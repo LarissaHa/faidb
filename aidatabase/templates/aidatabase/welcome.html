@@ -7,8 +7,27 @@
 
 {% block image %}{% endblock %}
 
+{% block page-heading %}{% endblock %}
+
 {% block content %}
 
-Content coming soon ... !
+<p>
+	Artificial intelligences (AI) inhabit our daily lives, but we do not know how this living together will look like in the future. 
+</p>
+<p>
+	Stories from Science Fiction (SF) show different futures and different theories about the relationships between humans and technology. With the analysis of an extensive list of 44 stories about AIs and the surrounding society, we can answer questions about the future and our understanding of AI today.
+</p>
+<p>
+	The results show that the stories present AIs more often as male than as female. However, female AIs are still more connected to the picture of serving AIs than male AIs are. Technical programs are pushed into the gender stereotypes that we want to abolish in our societies today. To change the discrepancy between the presentations of gender roles and other typical tropes in SF stories, we need to be aware of them. This study aims at raising this awareness for readers and developers. 
+</p>
+<p>
+	{{ div | safe }}
+</p>
+{% endblock %}
+
+{% block sidebar-header %}Get Started{% endblock %}
+{% block sidebar-content %}
+Have a look at our <a href="/ais/"><i class="fas fa-user-astronaut"></i> AI Overview</a> or at the <a href="/sources/"><i class="fas fa-book"></i> List of Sources</a>.
+
 
 {% endblock %}

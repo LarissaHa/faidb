@@ -1,0 +1,31 @@
+{% extends "aidatabase/home.html" %}
+{% load static %}
+
+{% block title %}FAIDB - Sources{% endblock %}
+{% block main_heading %}Sources - Overview{% endblock %}
+{% block breadcrumbs %}<a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="/sources/">Sources <i class="ion-ios-arrow-forward"></i></a></span>{% endblock %}
+
+{% block image %}{% endblock %}
+
+{% block page-heading %}List of Sources{% endblock %}
+
+{% block content %}
+
+<table>
+    <tr><td><b>Sources</b></td><td></td><!--<td><b>Groups</b></td>--></tr>
+    {% for item in result %}
+    <tr>
+        <td>{{ item.source.publish_year }}</td><td><a href="/sources/{{ item.source.source_id }}">{{ item.source.title }}</a>, written by {% for creator in item.creators %} <a href="/persons/{{ creator.person_id }}/">{{ creator.lastname }}, {{ creator.firstname }}</a>; {% endfor %}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
+
+{% block sidebar-header %}Source Information{% endblock %}
+
+{% block sidebar-content %}
+
+This list provides an overview of all registered sources - up until now. If you think one source is missing, request access to the administrator backend and register the source by yourself.
+
+{% endblock %}

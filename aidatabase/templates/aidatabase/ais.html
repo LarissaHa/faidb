@@ -1,0 +1,32 @@
+{% extends "aidatabase/home.html" %}
+{% load static %}
+
+{% block title %}FAIDB - Artificial Intelligences{% endblock %}
+{% block main_heading %}Artificial Intelligences - Overview{% endblock %}
+{% block breadcrumbs %}<a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="/ais/">AIs <i class="ion-ios-arrow-forward"></i></a></span>{% endblock %}
+
+{% block image %}{% endblock %}
+
+{% block page-heading %}List of AIs{% endblock %}
+
+{% block content %}
+
+<table>
+    <tr><td><b>AIs</b></td><!--<td><b>Groups</b></td>--></tr>
+    {% for item in ais %}
+    <tr>
+        <td><a href="/ais/{{ item.ai_id }}/">{{ item.name }}</a>, <a href="/sources/{{ item.source_id.source_id }}/">{{ item.source_id.title }}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
+
+{% block sidebar-header %}AI Information{% endblock %}
+
+{% block sidebar-content %}
+
+This list provides an overview of all registered AIs - up until now. If you think one AI is missing, request access to the administrator backend and register the AI by yourself.
+
+{% endblock %}
+

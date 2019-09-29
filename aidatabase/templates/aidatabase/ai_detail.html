@@ -1,0 +1,65 @@
+{% extends "aidatabase/home.html" %}
+{% load static %}
+
+{% block title %}FAIDB - Artificial Intelligences{% endblock %}
+{% block main_heading %}Artificial Intelligences - Detail{% endblock %}
+{% block breadcrumbs %}<a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="/ais/">AIs <i class="ion-ios-arrow-forward"></i></a></span>{% endblock %}
+
+{% block image %}{% endblock %}
+
+{% block page-heading %}{{ ai.name }}{% endblock %}
+
+{% block content %}
+
+{% for review in reviews %}
+    <b>{{ review }}</b><br>
+    <b>General Appearance</b><br>
+    Gender: {{ review.gender }}<br>
+    Description of Gender Manifestation: {{ review.manifestation }}<br>
+    Physical Appearance: {{ review.physical }}<br>
+    Difference to Humans: {{ review.difference }}<br>
+    Technical Appearance: {{ review.technical }}<br>
+    <b>AI Capability</b><br>
+    Level of Consciousness: {{ review.consciousness }}<br>
+    Level of Intelligence: {{ review.intelligence }}<br>
+    Free Will: {{ review.free_will }}<br>
+    Learning Ability: {{ review.learning }}<br>
+    Emotional Ability: {{ review.emotional }}<br>
+    <b>Relationship to Humans</b><br>
+    Integration: {{ review.integration }}<br>
+    Build on Purpose: {{ review.on_purpose }}<br>
+    Intensity of Relation to Creator: {{ review.creator_rel }}<br>
+    Intensity of Relation to Owner: {{ review.owner_rel }}<br>
+    Female Creator: {{ review.female_creator }}<br>
+    Society positive towards AI: {{ review.society_pos }}<br>
+    Perceived as Subject: {{ review.subject }}<br>
+    Perceived as Servant: {{ review.servant }}<br>
+    Intimacy: {{ review.intimacy }}<br>
+    <b>Characteristics in the Story</b><br>
+    Story told by: {{ review.told_by }}<br>
+    Quantity: {{ review.quantity }}<br>
+    Build / Used as Warrior: {{ review.warrior }}<br>
+    Rebellious: {{ review.rebellious }}<br>
+    Has harmed Humans of its own Accord: {{ review.harmed_humans }}<br>
+    Has harmed its Creator: {{ review.harms_creator }}<br>
+    Wants more Control: {{ review.more_control }}<br>
+    Aims at World Domination: {{ review.world_domination }}<br>
+    Is Alien Technology: {{ review.alien_technology }}<br>
+    Gender is mentioned explicitly in Story: {{ review.explicit_mention }}<br>
+    <hr>
+{% endfor %}
+
+{% endblock %}
+
+{% block sidebar-header %}AI Information{% endblock %}
+
+{% block sidebar-content %}
+<p>
+    Number of Reviews: {{ reviews|length }}
+</p>
+<p>
+    Source: <a href="/sources/{{ source.source_id }}/">{{ source.title }}</a>
+</p>
+
+{% endblock %}
+
