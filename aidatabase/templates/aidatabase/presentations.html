@@ -1,0 +1,36 @@
+{% extends "aidatabase/home.html" %}
+{% load static %}
+
+{% block title %}FAIDB - Presentations{% endblock %}
+{% block main_heading %}Presentations{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block image %}{% endblock %}
+
+{% block page-heading %}{% endblock %}
+
+{% block content %}
+
+I collected here all presentation videos and slides from events where I talked about this project so far:
+<ul>
+    <li><a href="https://www.youtube.com/watch?v=t51MaHS1HG0&t=296s" target="_blank">Video</a> and <a href="{% static 'aidatabase/ki-session-litcamp19.pdf' %}" target="_blank">Slides</a> from my session at the LiteraturCamp in Heidelberg (german only) (30.06.2019)</li>
+    <li>Video (not available yet) and <a href="{% static 'aidatabase/pydata-lightningtalk.pdf' %}" target="_blank">Slides</a> from my lightning talk at the PyData Meetup in Heidelberg (25.09.2019)</li>
+    <li><a href="" target="_blank">Slides</a> from my "Digital Humanities" lecture at the University of Mannheim (german only) (01.10.2019)</li>
+</ul>
+
+{% endblock %}
+
+{% block sidebar-header %}{% endblock %}
+{% block sidebar-content %}
+<ul>
+    <li>
+        <a href="/project/">About the Project</a>
+        <ul>
+            <li><a href="/project/thesis/">My Master Thesis</a></li>
+            <li><a href="/project/presentations/"><b>Recent Presentations</b></a></li>
+            <li><a href="/project/links/">Interesting Links</a></li>
+        </ul>
+    </li>
+</ul>
+{% endblock %}

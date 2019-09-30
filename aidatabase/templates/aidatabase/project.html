@@ -1,0 +1,33 @@
+{% extends "aidatabase/home.html" %}
+{% load static %}
+
+{% block title %}FAIDB - About the Project{% endblock %}
+{% block main_heading %}About the Project{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block image %}{% endblock %}
+
+{% block page-heading %}{% endblock %}
+
+{% block content %}
+
+This website was created to expanse the research which was started for my master thesis. I wanted to 
+know how Artificial Intelligences were presented in books, so I selected some of them, read them and 
+turned their stories into numbers. 
+
+{% endblock %}
+
+{% block sidebar-header %}{% endblock %}
+{% block sidebar-content %}
+<ul>
+    <li>
+        <a href="/project/"><b>About the Project</b></a>
+        <ul>
+            <li><a href="/project/thesis/">My Master Thesis</a></li>
+            <li><a href="/project/presentations/">Recent Presentations</a></li>
+            <li><a href="/project/links/">Interesting Links</a></li>
+        </ul>
+    </li>
+</ul>
+{% endblock %}

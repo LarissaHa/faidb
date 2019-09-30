@@ -1,6 +1,7 @@
 {% extends "aidatabase/home.html" %}
+{% load static %}
 
-{% block title %}Links{% endblock %}
+{% block title %}FAIDB - Links{% endblock %}
 {% block main_heading %}Links{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
@@ -13,17 +14,28 @@
 
 <ul>
     <li>
-        <a href="">CCC Talk by Polaris</a>
+        <a href="https://www.youtube.com/watch?v=XvH-Vpl5PeY" target="_blank">CCC Talk by Polaris</a>
     </li>
     <li>
-        <a href="">Research Project by KIT</a>
+        <a href="https://social-cues.org/" target="_blank">Chatbot Research Social Cue Design KIT</a>
     </li>
     <li>
-        <a href="https://github.com/LarissaHa/ai-master-thesis">Complete Dataset and Content of my Thesis</a>
+        <a href="https://github.com/LarissaHa/ai-master-thesis" target="_blank">Complete Dataset and Content of my Thesis</a>
     </li>
 </ul>
 
 {% endblock %}
 
 {% block sidebar-header %}{% endblock %}
-{% block sidebar-content %}{% endblock %}
+{% block sidebar-content %}
+<ul>
+    <li>
+        <a href="/project/">About the Project</a>
+        <ul>
+            <li><a href="/project/thesis/">My Master Thesis</a></li>
+            <li><a href="/project/presentations/">Recent Presentations</a></li>
+            <li><a href="/project/links/"><b>Interesting Links</b></a></li>
+        </ul>
+    </li>
+</ul>
+{% endblock %}

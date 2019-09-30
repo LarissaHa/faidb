@@ -1,12 +1,13 @@
 from django.shortcuts import get_object_or_404, render
 from .models import Person, Ai, Review, Source  # , Series
-from bokeh.plotting import figure, output_file, show
-from bokeh.embed import components
-from bokeh.models import ColumnDataSource, FactorRange, BoxSelectTool
-from bokeh.palettes import Spectral6
-from bokeh.transform import factor_cmap
+# from bokeh.plotting import figure, output_file, show
+# from bokeh.embed import components
+# from bokeh.models import ColumnDataSource, FactorRange, BoxSelectTool
+# from bokeh.palettes import Spectral6
+# from bokeh.transform import factor_cmap
 
 def welcome(request):
+    """
     fruits = ['Apples', 'Pears', 'Nectarines', 'Plums', 'Grapes', 'Strawberries']
     years = ['2015', '2016', '2017']
 
@@ -35,6 +36,17 @@ def welcome(request):
 
     script, div = components(plot)
     return render(request, 'aidatabase/welcome.html', {'script': script, 'div': div})
+    """
+    return render(request, 'aidatabase/welcome.html')
+
+def thesis(request):
+    return render(request, 'aidatabase/thesis.html')
+
+def project(request):
+    return render(request, 'aidatabase/project.html')
+
+def presentations(request):
+    return render(request, 'aidatabase/presentations.html')
 
 def links(request):
     return render(request, 'aidatabase/links.html')

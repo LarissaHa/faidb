@@ -9,8 +9,11 @@ urlpatterns = [
     path('sources/', views.sources, name="sources"),
     path('persons/<int:id>/', views.person_detail, name='person_detail'),
     path('persons/', views.persons, name="persons"),
-    path('links/', views.links, name="links"),
+    path('project/links/', views.links, name="links"),
     path('contact/', views.contact, name="contact"),
+    path('project/thesis/', views.thesis, name="thesis"),
+    path('project/', views.project, name="project"),
+    path('project/presentations/', views.presentations, name="presentations"),
     # path('series/<int:series_id>/', views.series_detail, name='series_detail'),
     # path('series/', views.series, name="series"),
 ]

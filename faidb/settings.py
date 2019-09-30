@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+y5m7xbl_#+0$*##74mtyq=(zg3r6*4ly36-9in^2#xhqg$47o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', 'results.fictional-ai-database.org', 'fictional-ai-database.org']
 
