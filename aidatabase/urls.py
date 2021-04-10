@@ -14,6 +14,8 @@ urlpatterns = [
     path('project/thesis/', views.thesis, name="thesis"),
     path('project/', views.project, name="project"),
     path('project/presentations/', views.presentations, name="presentations"),
+    path('imprint/', views.imprint, name="imprint"),
+    path('privacy/', views.privacy, name="privacy"),
     # path('series/<int:series_id>/', views.series_detail, name='series_detail'),
     # path('series/', views.series, name="series"),
 ]

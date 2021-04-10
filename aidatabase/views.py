@@ -54,6 +54,12 @@ def links(request):
 def contact(request):
     return render(request, 'aidatabase/contact.html')
 
+def imprint(request):
+    return render(request, 'aidatabase/imprint.html')
+
+def privacy(request):
+    return render(request, 'aidatabase/privacy.html')
+
 def ai_detail(request, ai_id):
     ai = get_object_or_404(Ai, pk=ai_id)
     reviews = Review.objects.filter(ai_id=ai.ai_id)
